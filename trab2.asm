@@ -33,7 +33,12 @@ linha_coluna:
   la t1, Matriz_A
   la t2, Matriz_B
   la t3, Matriz_C
-  mul t4, s7, s7
+  #mul t4, s7, s7
+  add t4, zero, s7
+  addi a7, zero, 0
+  #addi a7, a7 -1
+  addi t5, zero, 40 # 36
+  addi t6, zero, -4 # -4
   
 
 loop_lc:
@@ -50,6 +55,19 @@ loop_lc:
 
   #li t4, 100           # Valor de comparacao
   blt t0, t4, loop_lc  # Verifica se ainda ha elementos para percorrer
+  
+  #addi t5, t5, -4
+  addi t6, t6, -4
+  add t5, t5, t6
+  addi a7, a7, 1
+  addi t0, zero, 0
+  
+  add t1, t1, t5
+  add t2, t2, t5
+  add t3, t3, t5
+  
+  #add t5, t5, t6
+  blt a7, t4, loop_lc
 
   #ret
   j fim
